@@ -11,13 +11,14 @@ export class Home extends AppPage {
   private readonly gridlist = this.page.locator('app-search-result .mat-grid-list');
   private readonly dismissWelcomeButton = this.page.getByLabel('Close Welcome Banner');
   private readonly dismissCookieButton = this.page.getByLabel('dismiss cookie message');
-  private readonly dismissLanguageButton = this.page.locator('snack-bar-container button');
+  //private readonly dismissLanguageButton = this.page.getByLabel('Force page reload');
+  //private readonly dismissLanguageButton = this.page.locator('simple-snack-bar .mat-button');
 
   @step()
   async expectLoaded (message = 'Expected Home page to be opened') {
     await this.dismissWelcomeButton.click();
     await this.dismissCookieButton.click();
-    await this.dismissLanguageButton.click();
+    //await this.dismissLanguageButton.click();
     await expect(this.gridlist, message).toBeVisible();
   }
 

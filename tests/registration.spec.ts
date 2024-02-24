@@ -1,7 +1,7 @@
 import { test } from '@playwright/test';
 import { Application } from '../app';
-import { API } from '../api';
 import { randomUUID } from 'node:crypto';
+import { addAddressAndPaymentCard, createNewUser } from '../api/utils/user.util';
 
 const testUser = {
   email: `test_${randomUUID()}@test.com`,
@@ -28,7 +28,7 @@ test('Registration of the user', async ({ page }) => {
 });
 
 test('Re-registration of the user is prohibited', async ({ page }) => {
-  await new API().createNewUser(testUser2);
+  await createNewUser(testUser2);
   const app = new Application(page);
   await app.home.open();
   await app.register.open();

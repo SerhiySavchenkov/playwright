@@ -6,7 +6,7 @@ import { NavBar } from "../components/navigationbar.component";
 export class About extends AppPage {
   public pagePath = '/#/about';
   public navbar = new NavBar(this.page);
-  private readonly aboutCard = this.page.locator('mat-card');
+  private readonly aboutCard = this.page.locator('app-about .mat-card');
   private readonly header = this.page.locator('h1');
 
   @step()

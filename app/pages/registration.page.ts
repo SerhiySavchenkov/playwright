@@ -11,8 +11,8 @@ export class Register extends AppPage {
   private readonly emailInput = this.page.locator('#emailControl');
   private readonly passwordInput = this.page.locator('#passwordControl')
   private readonly repeatPasswordInput = this.page.locator('#repeatPasswordControl')
-  private readonly securityQuestionDropdown = this.page.locator('mat-select[role=combobox]')
-  private readonly securityQuestionListBox = this.page.locator('div[role=listbox]')
+  private readonly securityQuestionDropdown = this.page.locator('[role=combobox]')
+  private readonly securityQuestionListBox = this.page.locator('[role=listbox]')
   private readonly securityAnswerInput = this.page.locator('#securityAnswerControl')
   private readonly registerButton = this.page.locator('#registerButton')
   private readonly error = this.page.locator('div.error')
@@ -24,9 +24,13 @@ export class Register extends AppPage {
 
   @step()
   async selectSecurityQuestion (question: string) {
-    await this.securityQuestionDropdown.click();
-    await expect(this.securityQuestionListBox).toBeVisible();
-    await this.securityQuestionListBox.filter({ hasText: question }).click();
+    while (await this.securityQuestionListBox.isHidden()) {
+      await Promise.all([
+        await this.securityQuestionDropdown.click(),
+        new Promise((resolve) => setTimeout(resolve, 10_000)),
+      ]);
+    }
+    await this.page.getByText(question).click();
   }
 
   @step()

@@ -1,8 +1,8 @@
-import { loggedInAsAdminFixture } from '../fixtures';
+import { loggedInAsNewUserFixture } from '../fixtures';
 
-const fixture = loggedInAsAdminFixture;
+const fixture = loggedInAsNewUserFixture;
 
-fixture('fixt: Logged in admin user can buy a product', async ({ app }) => {
+fixture('fixt: New user can buy a product', async ({ app }) => {
   await app.basket.open();
   await app.basket.clearBasket();
   await app.search.open();
@@ -15,7 +15,7 @@ fixture('fixt: Logged in admin user can buy a product', async ({ app }) => {
   await app.address.clickContinue();
   await app.delivery.chooseStandardDeliverySpeed();
   await app.delivery.clickContinue();
-  await app.payment.chooseCard('8108');
+  await app.payment.chooseCard('4321');
   await app.payment.clickContinue();
   await app.order.expectOrderPresent('Apple Juice (1000ml)');
   await app.order.expectOrderPresent('Melon Bike');
