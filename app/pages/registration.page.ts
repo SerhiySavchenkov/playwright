@@ -18,12 +18,12 @@ export class Register extends AppPage {
   private readonly error = this.page.locator('div.error')
 
   @step()
-  async expectLoaded (message = 'Expected Register page to be opened') {
+  async expectLoaded(message = 'Expected Register page to be opened'): Promise<void> {
     await expect(this.registerCard, message).toBeVisible();
   }
 
   @step()
-  async selectSecurityQuestion (question: string) {
+  async selectSecurityQuestion(question: string): Promise<void> {
     while (await this.securityQuestionListBox.isHidden()) {
       await Promise.all([
         await this.securityQuestionDropdown.click(),
@@ -34,7 +34,7 @@ export class Register extends AppPage {
   }
 
   @step()
-  async signUpNewUser (user: { email: string, password: string }) {
+  async signUpNewUser(user: { email: string, password: string }): Promise<void> {
     await this.emailInput.fill(user.email);
     await this.passwordInput.fill(user.password);
     await this.repeatPasswordInput.fill(user.password);
@@ -44,7 +44,7 @@ export class Register extends AppPage {
   }
 
   @step()
-  async expectErrorMessage (message: string) {
+  async expectErrorMessage(message: string): Promise<void> {
     await expect(this.error).toContainText(message);
   }
 }

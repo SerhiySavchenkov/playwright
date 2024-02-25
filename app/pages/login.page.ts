@@ -12,12 +12,12 @@ export class Login extends AppPage {
   private readonly loginButton = this.page.locator('#loginButton')
 
   @step()
-  async expectLoaded (message = 'Expected Login page to be opened') {
+  async expectLoaded(message = 'Expected Login page to be opened'): Promise<void> {
     await expect(this.loginCard, message).toBeVisible();
   }
 
   @step()
-  async logInWithNewUser (user: { email: string, password: string }) {
+  async logInWithNewUser(user: { email: string, password: string }): Promise<void> {
     await this.emailInput.fill(user.email);
     await this.passwordInput.fill(user.password);
     await this.loginButton.click();

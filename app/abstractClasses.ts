@@ -8,7 +8,7 @@ export abstract class Component extends PageHolder {
   abstract expectLoaded (message?: string): Promise<void>;
 
   @step()
-  async isLoaded (): Promise<boolean> {
+  async isLoaded(): Promise<boolean> {
     try {
       await this.expectLoaded()
       return true
@@ -29,7 +29,7 @@ export abstract class AppPage extends Component {
     * Opens the page in the browser and expectLoaded should pass
     */
   @step()
-  async open (path?: string) {
+  async open(path?: string): Promise<void> {
     await this.page.goto(path ?? this.pagePath);
     await this.expectLoaded();
   }

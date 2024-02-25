@@ -25,7 +25,7 @@ export class Basket extends AppPage {
   await page.locator('mat-card').click();
 */
   @step()
-  async expectLoaded (message = 'Expected Basket page to be opened') {
+  async expectLoaded(message = 'Expected Basket page to be opened'): Promise<void> {
     if (await this.navbar.getBasketItemsCount() > 0) {
       await expect(this.basketRows.first(), message).toBeVisible();
     } else {
@@ -34,19 +34,19 @@ export class Basket extends AppPage {
   }
 
   @step()
-  async expectHeaderText (title: string | RegExp) {
+  async expectHeaderText(title: string | RegExp): Promise<void> {
     await expect(this.header).toContainText(title);
   }
 
   @step()
-  async clearBasket () {
+  async clearBasket(): Promise<void> {
     for (const btn of (await this.basketRemoveButtons.all()).reverse()) {
       await btn.click();
     }
   }
 
   @step()
-  async checkout () {
+  async checkout(): Promise<void> {
     await this.checkoutButton.click();
   }
 }

@@ -48,7 +48,7 @@ export interface UserCreateRequest {
 
 export async function createNewUser (data: UserCreateRequest) {
   const req = await request.newContext();
-  const resp = await req.post(`${baseUrl}/api/Users`, {
+  const resp = await req.post('/api/Users', {
     headers: jsonHeader,
     data
   });
@@ -58,7 +58,7 @@ export async function createNewUser (data: UserCreateRequest) {
 
 export async function loginUser (data: UserCreateRequest) {
   const req = await request.newContext();
-  const resp = await req.post(`${baseUrl}/rest/user/login`, {
+  const resp = await req.post('/rest/user/login', {//`${baseUrl}/rest/user/login`
     headers: jsonHeader,
     data
   });
@@ -69,7 +69,7 @@ export async function loginUser (data: UserCreateRequest) {
 
 export async function addAddress(data: AddressData) {
   const req = await request.newContext();
-  const resp = await req.post(`${baseUrl}/api/Addresss`, {
+  const resp = await req.post('/api/Addresss', {
     headers: authHeader,
     data
   });
@@ -78,7 +78,7 @@ export async function addAddress(data: AddressData) {
 
 export async function addPaymentCard(data: PaymentCardData) {
   const req = await request.newContext();
-  const resp = await req.post(`${baseUrl}/api/Cards`, {
+  const resp = await req.post('/api/Cards', {
     headers: authHeader,
     data
   });

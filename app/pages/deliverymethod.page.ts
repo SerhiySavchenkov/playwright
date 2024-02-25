@@ -10,22 +10,22 @@ export class Delivery extends AppPage {
   private readonly continueButton = this.page.getByLabel('Proceed to delivery method');
 
   @step()
-  async expectLoaded (message = 'Expected Basket page to be opened') {
+  async expectLoaded(message = 'Expected Basket page to be opened'): Promise<void> {
     await expect(this.basketCard, message).toBeVisible();
   }
 
   @step()
-  async expectHeaderText (title: string | RegExp) {
+  async expectHeaderText(title: string | RegExp): Promise<void> {
     await expect(this.header).toContainText(title);
   }
 
   @step()
-  async chooseStandardDeliverySpeed () {
+  async chooseStandardDeliverySpeed(): Promise<void> {
     await this.standardDeliveryButton.click();
   }
 
   @step()
-  async clickContinue () {
+  async clickContinue(): Promise<void> {
     await this.continueButton.click();
   }
 }

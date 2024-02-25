@@ -15,15 +15,14 @@ export class Home extends AppPage {
   //private readonly dismissLanguageButton = this.page.locator('simple-snack-bar .mat-button');
 
   @step()
-  async expectLoaded (message = 'Expected Home page to be opened') {
+  async expectLoaded (message = 'Expected Home page to be opened'): Promise<void> {
     await this.dismissWelcomeButton.click();
     await this.dismissCookieButton.click();
-    //await this.dismissLanguageButton.click();
     await expect(this.gridlist, message).toBeVisible();
   }
 
   @step()
-  async expectTitle (title: string | RegExp) {
+  async expectTitle(title: string | RegExp): Promise<void> {
     await expect(this.page).toHaveTitle(title);
   }
 }

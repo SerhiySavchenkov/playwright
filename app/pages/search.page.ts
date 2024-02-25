@@ -13,17 +13,17 @@ export class Search extends AppPage {
   private readonly msgRemoveButtons = this.page.locator('mat-card #closeButton');
 
   @step()
-  async expectLoaded (message = 'Expected Search page to be opened') {
+  async expectLoaded(message = 'Expected Search page to be opened'): Promise<void> {
     await expect(this.gridList, message).toBeVisible();
   }
 
   @step()
-  async expectTitle (title: string | RegExp) {
+  async expectTitle(title: string | RegExp): Promise<void> {
     await expect(this.page).toHaveTitle(title);
   }
 
   @step()
-  async addProductByName (name: string) {
+  async addProductByName(name: string): Promise<void> {
     const locator = this.page.locator("mat-card:has-text('" + name + "')").locator('[class*=ribbon-top-left]');
     if (await locator.count() > 0) {
       await expect(locator).not.toContainText('Sold Out', { timeout: 1 });
@@ -32,7 +32,7 @@ export class Search extends AppPage {
   }
 
   @step()
-  async removeMessages () {
+  async removeMessages(): Promise<void> {
     for (const btn of (await this.msgRemoveButtons.all()).reverse()) {
       await btn.click();
     }

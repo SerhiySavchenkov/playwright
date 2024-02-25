@@ -10,22 +10,22 @@ export class Order extends AppPage {
   private readonly completePurchaseButton = this.page.getByLabel('Complete your purchase');
 
   @step()
-  async expectLoaded (message = 'Expected Order page to be opened') {
+  async expectLoaded(message = 'Expected Order page to be opened'): Promise<void> {
     await expect(this.orderBasket, message).toBeVisible();
   }
 
   @step()
-  async expectHeaderText (title: string | RegExp) {
+  async expectHeaderText(title: string | RegExp): Promise<void> {
     await expect(this.header).toContainText(title);
   }
 
   @step()
-  async expectOrderPresent (title: string | RegExp) {
+  async expectOrderPresent(title: string | RegExp): Promise<void> {
     await expect(this.orderTable).toContainText(title);
   }
 
   @step()
-  async clickContinue () {
+  async clickContinue(): Promise<void> {
     await this.completePurchaseButton.click();
   }
 }

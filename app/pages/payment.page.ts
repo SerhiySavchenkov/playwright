@@ -9,22 +9,22 @@ export class Payment extends AppPage {
   private readonly continueButton = this.page.getByLabel('Proceed to review');
 
   @step()
-  async expectLoaded (message = 'Expected Payment page to be opened') {
+  async expectLoaded(message = 'Expected Payment page to be opened'): Promise<void> {
     await expect(this.paymentCard, message).toBeVisible();
   }
 
   @step()
-  async expectHeaderText (title: string | RegExp) {
+  async expectHeaderText(title: string | RegExp): Promise<void> {
     await expect(this.header).toContainText(title);
   }
 
   @step()
-  async chooseCard (number: string) {
+  async chooseCard(number: string): Promise<void> {
     await this.page.getByRole('row', { name: number }).locator('label').click();
   }
 
   @step()
-  async clickContinue () {
+  async clickContinue(): Promise<void> {
     await this.continueButton.click();
   }
 }

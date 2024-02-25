@@ -19,38 +19,39 @@ export class NavBar extends Component {
     await expect(this.toolbar, message).toBeVisible();
   }
 
-  @step()
-  async openSideMenu () {
+  @step('Click on left side menu button')
+  async openSideMenu(): Promise<void> {
     await this.sideMenuButton.click();
   }
 
   @step()
-  async goBackToHomePage () {
+  async goBackToHomePage(): Promise<void> {
     await this.backToHomePageButton.click();
   }
 
   @step()
-  async openAccountMenu () {
+  async openAccountMenu(): Promise<void> {
     await this.accountButton.click();
   }
 
   @step()
-  async openProfile () {
+  async openProfile(): Promise<void> {
     await this.openAccountMenu();
     await this.userProfileItem.click();
   }
 
-  @step()
-  async openBasket () {
+  @step('Click on Basket button')
+  async openBasket(): Promise<void> {
     await this.basketButton.click();
   }
 
   @step()
-  async getBasketItemsCount () {
+  async getBasketItemsCount(): Promise<number> {
     return Number(await this.basketItemsCount.textContent());
   }
 
-  async expectUserLoggedIn (userName: string) {
+  @step()
+  async expectUserLoggedIn(userName: string): Promise<void> {
     await this.openAccountMenu();
     await expect(this.firstProfileMenuItem).toContainText(userName);
   }

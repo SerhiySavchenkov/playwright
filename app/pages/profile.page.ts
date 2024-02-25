@@ -8,11 +8,11 @@ export class Profile extends AppPage {
   private readonly emailInput = this.page.locator('#email');
 
   @step()
-  async expectLoaded (message = 'Expected About page to be opened') {
+  async expectLoaded(message = 'Expected About page to be opened'): Promise<void> {
     await expect(this.profileCard, message).toBeVisible();
   }
 
-  async expectUserEmail (userEmail: string) {
+  async expectUserEmail(userEmail: string): Promise<void> {
     expect(await this.emailInput.getAttribute('value')).toEqual(userEmail);
   }
 };

@@ -9,17 +9,17 @@ export class Completion extends AppPage {
   private readonly orderTable = this.page.locator('mat-table');
 
   @step()
-  async expectLoaded (message = 'Expected Order Summary page to be opened') {
+  async expectLoaded(message = 'Expected Order Summary page to be opened'): Promise<void> {
     await expect(this.orderCard, message).toBeVisible();
   }
 
   @step()
-  async expectHeaderText (title: string | RegExp) {
+  async expectHeaderText(title: string | RegExp): Promise<void> {
     await expect(this.header).toContainText(title);
   }
 
   @step()
-  async expectOrderPresent (title: string | RegExp) {
+  async expectOrderPresent(title: string | RegExp): Promise<void> {
     await expect(this.orderTable).toContainText(title);
   }
 }

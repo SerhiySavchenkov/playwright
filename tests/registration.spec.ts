@@ -1,7 +1,7 @@
 import { test } from '@playwright/test';
 import { Application } from '../app';
 import { randomUUID } from 'node:crypto';
-import { addAddressAndPaymentCard, createNewUser } from '../api/utils/user.util';
+import { createNewUser } from '../api/utils/user.util';
 
 const testUser = {
   email: `test_${randomUUID()}@test.com`,

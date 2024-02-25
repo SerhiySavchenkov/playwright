@@ -10,12 +10,12 @@ export class About extends AppPage {
   private readonly header = this.page.locator('h1');
 
   @step()
-  async expectLoaded (message = 'Expected About page to be opened') {
+  async expectLoaded(message = 'Expected About page to be opened'): Promise<void> {
     await expect(this.aboutCard, message).toBeVisible();
   }
 
   @step()
-  async expectHeaderText (title: string | RegExp) {
+  async expectHeaderText(title: string | RegExp): Promise<void> {
     await expect(this.header).toContainText(title);
   }
 }
